@@ -20,6 +20,19 @@ jobs:
 
              - name: Test the Applications
                run: npm run check
-                 
-                 
-        
+
+    build:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+
+             - name: Install NodeJs
+               uses: actions/setup-node@v4
+               with:
+                node-version: "22"
+
+             - name: Create the Artifact
+               run: |
+                mkdir build
+                cd build
+                echo "Hello World" > hello.txt
